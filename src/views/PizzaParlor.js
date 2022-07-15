@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
-import { NavBar } from './Navbar';
-import { ApplicationViews } from './views/ApplicationViews';
-import './styles/App.css';
+import { NavBar } from '../nav/Navbar';
+import { ApplicationViews } from './ApplicationViews';
+import '../styles/App.css';
 
 
 export const PizzaParlor = () => {

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import '../styles/index.css';
 import '../styles/footer.css'
+// import { fetchToppings } from '../data/toppingsData';
+// import { fetchToppings } from '../data/index';
 
 export const Toppings = () => {
     const APIUrl = "http://localhost:8088";
@@ -8,6 +10,7 @@ export const Toppings = () => {
     const [toppings, setToppings] = useState([]);
   
     useEffect(() => { 
+      // fetchToppings().then(setToppings)
       fetch(`${APIUrl}/toppings`)
         .then(response => response.json())
         .then(data => setToppings(data))
@@ -19,8 +22,6 @@ export const Toppings = () => {
   
     return (
 <div className="App">
-{/* <h1>Momma Leoni's Pizza Parlor</h1>
-<div>We make only the freshest pies in the tri-state area</div> */}
 <h3>Toppings:</h3>
 <ul>
   {
@@ -29,9 +30,7 @@ export const Toppings = () => {
     })
   }
 </ul>
-<button type='button' onClick={callOnMe}>Change it Up</button>   
-{/* <Footer /> */}
+<button type='button' onClick={callOnMe}>Change it Up</button>
 </div>
-
     )
 }
