@@ -1,24 +1,27 @@
 import { useEffect, useState } from 'react';
 import '../styles/index.css';
 import '../styles/footer.css'
+import '../styles/Toppings.css'
 // import { fetchToppings } from '../data/toppingsData';
 import { fetchToppings } from '../data/index';
 
-export const Toppings = () => {
-    // const APIUrl = "http://localhost:8088";
+export const Toppings = ({ selectedToppinz, setSelectedToppinz }) => {
+// need to pass through props for use in this component.
 
-    const [toppings, setToppings] = useState([]);
-    // const [number, updateNumber] = useState(0);
+  const [toppings, setToppings] = useState([]);
+  // const [number, updateNumber] = useState(0);
+      // array destructuring ^
     
     useEffect(() => { 
-      fetchToppings().then(setToppings)
+      fetchToppings().then(setToppings) // this is the same as below.
       // fetch(`${APIUrl}/toppings`)
       // .then(response => response.json())
       // .then(data => setToppings(data))
       // console.warn("Use Effect 1")
     }, []) // the [] are called a dependency array
-    
-/*    useEffect(() => {
+  
+    /*  
+    useEffect(() => {
         //this is an anonymous function (aka a lambda)
         //this function runs when state is changed.
         //We insert the code we want to run on a state change here.
@@ -31,22 +34,21 @@ export const Toppings = () => {
       console.warn("useEffect 3", number)
     }, [number])
 */
-    
-     const callOnMe = () => {
-      setToppings([{name: "a new topping", id: 1}, {name: "another new topping", id: 2}])
-     }
   
     return (
-<div className="App">
+<div className="menu--list toppings">
 <h3>Toppings:</h3>
-<ul>
+<div className='toppings--items'>
   {
-    toppings.map(topping => {
-      return <li key={topping.id}>{topping.name}</li>
-    })
-  }
-</ul>
-<button type='button' onClick={callOnMe}>Change it Up</button>
+    toppings.map(topping => 
+       <label htmlFor={`topping--${topping.id}`} key={topping.id}>
+        <input type="checkbox" id={`topping--${topping.id}`} onChange={() => setSelectedToppinz(topping.id)}
+          // checked={selectedToppinz.includes(topping.id) ? true : false} 
+        />
+        {topping.name}
+      </label>
+    )}
+  </div>
 </div>
     )
 }

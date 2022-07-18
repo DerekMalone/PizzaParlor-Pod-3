@@ -1,18 +1,20 @@
 import React, { useState } from "react";
-import { Size } from "./Size";
-import { Toppings } from "./Toppings";
+import { Size, Toppings, Crusts } from "./index";
 
 export const Menu = () => {
-    const [ size, setSize ] = useState(0);
-    const [ cruzt, setCruzt ] = useState(0);
-    const [ toppinz, setToppinz] = useState([])
+    const [ selectedSize, setSelectedSize ] = useState(0);
+    const [ selectedcruzt, setSelectedCruzt ] = useState(0);
+    const [ selectedToppinz, setSelectedToppinz] = useState([])
     // array destructuring
+
+
 
     return (
     <>
         <h3>We Need to create an Order menu deal</h3>
-        <Size />
-        <Toppings />
+        <Size selectedSize={selectedSize} setSelectedSize={setSelectedSize} />
+        <Crusts props={[selectedcruzt, setSelectedCruzt]} />
+        <Toppings selectedToppinz={selectedToppinz} setSelectedToppinz={setSelectedToppinz} />
     </>
     )
 }
