@@ -19,9 +19,12 @@ useEffect(() => {
                     (event) => {
                         const intValueOfUserSelection = parseInt(event.target.value)
                         props[1](intValueOfUserSelection)
-                        /* this works because bracket notation gives us access to the invoke the function stored 
+                        /* 
+                         this works because bracket notation gives us access to the invoke the function stored 
                          at position 1 in the array where dot notation gives us the value at that location which
                          is not actaully the function?
+
+                         props.setSelectedCruzt(intValueOfUserSelection) gives error of "not a function"
                          */
                     }
                 }

@@ -5,7 +5,7 @@ import '../styles/Toppings.css'
 // import { fetchToppings } from '../data/toppingsData';
 import { fetchToppings } from '../data/index';
 
-export const Toppings = ({ selectedToppinz, setSelectedToppinz }) => {
+export const Toppings = ({ selectOrderTopping, selectedToppinz }) => {
 // need to pass through props for use in this component.
 
   const [toppings, setToppings] = useState([]);
@@ -42,8 +42,8 @@ export const Toppings = ({ selectedToppinz, setSelectedToppinz }) => {
   {
     toppings.map(topping => 
        <label htmlFor={`topping--${topping.id}`} key={topping.id}>
-        <input type="checkbox" id={`topping--${topping.id}`} onChange={() => setSelectedToppinz(topping.id)}
-          // checked={selectedToppinz.includes(topping.id) ? true : false} 
+        <input type="checkbox" id={`topping--${topping.id}`} onChange={() => selectOrderTopping(topping.id)}
+          checked={selectedToppinz.includes(topping.id) ? true : false} 
         />
         {topping.name}
       </label>
