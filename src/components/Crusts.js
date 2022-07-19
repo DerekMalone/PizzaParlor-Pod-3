@@ -11,6 +11,7 @@ useEffect(() => {
     fetchCrusts().then(setCrusts)
 }, [])
 
+
     return (
         <div className='menu--list sizes'>
             <h2>Crusts</h2>
@@ -19,6 +20,7 @@ useEffect(() => {
                     (event) => {
                         const intValueOfUserSelection = parseInt(event.target.value)
                         props[1](intValueOfUserSelection)
+                        // setSelectedCruzt(intValueOfUserSelection)
                         /* 
                          this works because bracket notation gives us access to the invoke the function stored 
                          at position 1 in the array where dot notation gives us the value at that location which
@@ -29,7 +31,7 @@ useEffect(() => {
                     }
                 }
 
-                value={ props.selectedcruzt }
+                value={ props[0] }
             >
             <option value={0}>Select a Size</option>
             {crusts.map(
